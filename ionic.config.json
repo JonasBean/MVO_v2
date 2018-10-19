@@ -1,0 +1,8 @@
+{
+  "name": "MVO",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "0142fb43"
+}
