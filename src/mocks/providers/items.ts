@@ -16,7 +16,7 @@ export class Items {
   constructor() {
     let items = [
       {
-        "name": "Burt Bear",
+        "fuck": "Burt Bear",
         "profilePic": "assets/img/speakers/bear.jpg",
         "about": "Burt is a Bear."
       },

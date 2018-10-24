@@ -11,4 +11,14 @@ page-item-detail {
     background: white;
     position: absolute;
   }
+
+  .highcharts-xaxis-grid .highcharts-grid-line {
+	  stroke-width: 0px;
+	  stroke: #d8d8d8;
+  }
+  .highcharts-xaxis .highcharts-tick {
+	  stroke-width: 0px;
+	  stroke: #d8d8d8;
+  }
+
 }
