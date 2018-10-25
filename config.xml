@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="ionic-firebase-crud-example" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Ionic Firebase CRUD Example</name>
-    <description>Learn how to create a complete Ionic app with Firebase.</description>
-    <author email="contact@ionicthemes.com" href="https://ionicthemes.com/">IonicThemes Team</author>
+<widget id="de.bean.jonas" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>MVO</name>
+    <description>Besetzungsverwaltung des Musikverein Oberndorf</description>
+    <author email="Jonas_Bien@gmx.de">Jonas Bien</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -85,6 +85,7 @@
     <plugin name="cordova-plugin-telerik-imagepicker" spec="^2.2.0">
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="your usage message" />
     </plugin>
-    <engine name="android" spec="7.0.0" />
-    <engine name="ios" spec="~4.5.4" />
+    <plugin name="cordova-plugin-firebase" spec="2.0.5" />
+    <engine name="ios" spec="4.5.5" />
+    <engine name="android" spec="^6.4.0" />
 </widget>
