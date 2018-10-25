@@ -37,7 +37,8 @@ export class DetailsPage {
     this.image = this.item.image;
     this.validations_form = this.formBuilder.group({
       title: new FormControl(this.item.title, Validators.required),
-      description: new FormControl(this.item.description, Validators.required)
+      description: new FormControl(this.item.description, Validators.required),
+      wear: new FormControl(this.item.wear, Validators.required)
     });
   }
 
@@ -49,6 +50,7 @@ export class DetailsPage {
     let data = {
       title: value.title,
       description: value.description,
+      wear: value.wear,
       image: this.image
     }
     this.firebaseService.updateTask(this.item.id,data)

@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar color="secondary">
-    <ion-title>Firebase CRUD</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Termine</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="openNewUserModal()">
         <ion-icon name="add"></ion-icon>
@@ -12,17 +12,35 @@
   <div class="list-mini">
     <ion-list>
       <ion-item *ngFor="let item of items" (click)="viewDetails(item.payload.doc.id,item.payload.doc.data())">
-        <ion-thumbnail item-start>
-          <img [src]="item.payload.doc.data().image">
-        </ion-thumbnail>
-        <h2>{{item.payload.doc.data().title}}</h2>
-        <button ion-button clear item-end>Details</button>
+
+        <ion-card>
+          <img src="{{item.payload.doc.data().image}}"/>
+
+          <ion-card-content>
+            <ion-grid>
+              <ion-row>
+                <ion-col col-9>
+                  <ion-card-title>
+                    {{item.payload.doc.data().title}}
+                  </ion-card-title>
+                </ion-col>
+                <ion-col col-3>
+                  {{item.payload.doc.data().wear}}
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            <p>
+              {{item.payload.doc.data().description}}
+            </p>
+          </ion-card-content>
+        </ion-card>
+
       </ion-item>
     </ion-list>
   </div>
 </ion-content>
 <ion-footer (click)="logout()">
   <ion-toolbar color="secondary">
-    <ion-title>Log out</ion-title>
+    <ion-title>Ausloggen</ion-title>
   </ion-toolbar>
 </ion-footer>

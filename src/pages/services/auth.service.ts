@@ -13,27 +13,14 @@ export class AuthService {
   doRegister(value){
    return firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
     .then(() => {
-            console.log('Please verify your email');
             let user = firebase.auth().currentUser;
             user.sendEmailVerification();
-            alert(user.email);
+            alert("Account wurde erstellt - Bitte noch Email Adresse bestätigen.");
         }).catch((error) => {
             console.log('Error: ' + error);
         });
   }
 
-/*
-  signup(email: string, password: string) {
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-        .then(() => this.afAuth.auth.currentUser.sendEmailVerification()
-            .then(() => {
-                console.log('Please verify your email');
-                alert('Please verify your email');
-            }).catch((error) => {
-                console.log('Error: ' + error);
-            }));
-}
-*/
   doLogin(value){
    return new Promise<any>((resolve, reject) => {
      firebase.auth().signInWithEmailAndPassword(value.email, value.password)

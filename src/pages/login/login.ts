@@ -20,14 +20,14 @@ export class LoginPage {
 
   validation_messages = {
    'email': [
-     { type: 'required', message: 'Email is required.' },
-     { type: 'pattern', message: 'Please enter a valid email.' }
+     { type: 'required', message: 'Email ist notwendig.' },
+     { type: 'pattern', message: 'Korrekte Email-Adresse eingeben.' }
    ],
    'password': [
-     { type: 'required', message: 'Password is required.' },
-     { type: 'minlength', message: 'Password must be at least 5 characters long.' }
+     { type: 'required', message: 'Passwort ist notwendig.' },
+     { type: 'minlength', message: 'Passwort muss mindestens 5 Zeichen lang sein.' }
    ]
- };
+  };
 
   constructor(
     private navCtrl: NavController,

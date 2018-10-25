@@ -39,6 +39,7 @@ export class MenuPage {
     let data = {
       title: item.title,
       description: item.description,
+      wear: item.wear,
       image: item.image,
       id: id
     }

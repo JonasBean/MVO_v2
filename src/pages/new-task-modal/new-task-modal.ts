@@ -45,6 +45,7 @@ export class NewTaskModalPage {
     let data = {
       title: value.title,
       description: value.description,
+      wear: value.wear,
       image: this.image
     }
     this.firebaseService.createTask(data)
