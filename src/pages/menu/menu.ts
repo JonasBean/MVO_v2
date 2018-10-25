@@ -1,40 +1,65 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, Nav, NavController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController, ModalController } from 'ionic-angular';
+import { AuthService } from '../services/auth.service';
+import { FirebaseService } from '../services/firebase.service';
+import { NewTaskModalPage } from '../new-task-modal/new-task-modal';
+import { DetailsPage } from '../details/details';
+import { LoginPage } from '../login/login';
 
-interface PageItem {
-  title: string
-  component: any
-}
-type PageList = PageItem[]
 
-@IonicPage()
 @Component({
   selector: 'page-menu',
   templateUrl: 'menu.html'
 })
+
 export class MenuPage {
-  // A reference to the ion-nav in our component
-  @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = 'ContentPage';
+  items: Array<any>;
 
-  pages: PageList;
+  constructor(
+    private navCtrl: NavController,
+    private modalCtrl: ModalController,
+    private authService: AuthService,
+    private firebaseService: FirebaseService
+  ) {}
 
-  constructor(public navCtrl: NavController) {
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Sign in', component: 'LoginPage' },
-      { title: 'Signup', component: 'SignupPage' }
-    ];
+  ionViewWillEnter(){
+    this.getData();
   }
 
-  ionViewDidLoad() {
-    console.log('Hello MenuPage Page');
+  getData(){
+    this.firebaseService.getTasks()
+    .then(tasks => {
+      this.items = tasks;
+    })
   }
 
-  openPage(page: PageItem) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+  viewDetails(id, item){
+    // debugger
+    let data = {
+      title: item.title,
+      description: item.description,
+      image: item.image,
+      id: id
+    }
+    this.navCtrl.push(DetailsPage, {
+      data: data
+    })
   }
+
+  openNewUserModal(){
+    let modal = this.modalCtrl.create(NewTaskModalPage);
+    modal.onDidDismiss(data => {
+      this.getData();
+    });
+    modal.present();
+  }
+
+  logout(){
+    this.authService.doLogout()
+    .then(res => {
+      this.navCtrl.push(LoginPage);
+    })
+  }
+
 }

@@ -1,8 +1,7 @@
 {
-  "name": "MVO",
+  "name": "ionic-firebase-crud-example",
   "integrations": {
     "cordova": {}
   },
-  "type": "ionic-angular",
-  "pro_id": "0142fb43"
+  "type": "ionic-angular"
 }
