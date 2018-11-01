@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ViewController, normalizeURL, ToastController, LoadingController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { FirebaseService } from '../services/firebase.service';
-import { ImagePicker } from '@ionic-native/image-picker';
 
 @Component({
   selector: 'page-new-task-modal',
@@ -31,8 +30,8 @@ export class NewTaskModalPage {
     this.item = '';
     this.validations_form = this.formBuilder.group({
       image: new FormControl('', Validators.required),
-      title: new FormControl(''),
-      date: new FormControl(this.item.date, Validators.required),
+      title: new FormControl('', Validators.required),
+      date: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
       wear: new FormControl('', Validators.required)
     });
