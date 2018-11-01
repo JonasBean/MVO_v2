@@ -8,39 +8,55 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-content class="list-mini-content">
   <div class="list-mini">
     <ion-list>
       <ion-item *ngFor="let item of items" (click)="viewDetails(item.payload.doc.id,item.payload.doc.data())">
-
         <ion-card>
-          <img src="{{item.payload.doc.data().image}}"/>
 
-          <ion-card-content>
+          <img src="{{item.payload.doc.data().image}}" />
+
+          <p class="headerDate">
+            {{item.payload.doc.data().date| date: "dd.MM."}}
+          </p>
+
+          <ion-card-content class="contentwidth">
             <ion-grid>
+
               <ion-row>
-                <ion-col col-9>
-                  <ion-card-title>
+                <ion-col col-10>
+                  <ion-card-title class="titleOfCard" text-wrap>
                     {{item.payload.doc.data().title}}
                   </ion-card-title>
                 </ion-col>
-                <ion-col col-3>
-                  {{item.payload.doc.data().wear}}
+
+                <ion-col col-2 class="wear">
+                  <img src="{{item.payload.doc.data().wear}}" style="width: 3em; height: 5.2em" padding-top=40px />
                 </ion-col>
               </ion-row>
-            </ion-grid>
-            <p>
-              {{item.payload.doc.data().description}}
-            </p>
-          </ion-card-content>
-        </ion-card>
 
+              <ion-row>
+                <p class="beschreibung" text-wrap>
+                  {{item.payload.doc.data().description}}
+                </p>
+              </ion-row>
+              
+              <p class="datumText">
+                {{item.payload.doc.data().date| date: "dd.MM.yy - H:mm"}} Uhr
+              </p>
+
+            </ion-grid>
+          </ion-card-content>
+
+        </ion-card>
       </ion-item>
     </ion-list>
   </div>
 </ion-content>
+
 <ion-footer (click)="logout()">
-  <ion-toolbar color="secondary">
+  <ion-toolbar color="primary">
     <ion-title>Ausloggen</ion-title>
   </ion-toolbar>
 </ion-footer>

@@ -11,7 +11,6 @@ import { ImagePicker } from '@ionic-native/image-picker';
 export class DetailsPage {
 
   validations_form: FormGroup;
-  image: any;
   item: any;
   loading: any;
 
@@ -19,9 +18,7 @@ export class DetailsPage {
     private navParams: NavParams,
     private alertCtrl: AlertController,
     private viewCtrl: ViewController,
-    private toastCtrl: ToastController,
     private formBuilder: FormBuilder,
-    private imagePicker: ImagePicker,
     private firebaseService: FirebaseService,
     private loadingCtrl: LoadingController
   ) {
@@ -34,9 +31,10 @@ export class DetailsPage {
 
   getData(){
     this.item = this.navParams.get('data');
-    this.image = this.item.image;
     this.validations_form = this.formBuilder.group({
-      title: new FormControl(this.item.title, Validators.required),
+      image: new FormControl(this.item.image, Validators.required),
+      title: new FormControl(this.item.title),
+      date: new FormControl(this.item.date, Validators.required),
       description: new FormControl(this.item.description, Validators.required),
       wear: new FormControl(this.item.wear, Validators.required)
     });
@@ -48,10 +46,11 @@ export class DetailsPage {
 
   onSubmit(value){
     let data = {
+      image: value.image,
       title: value.title,
+      date: value.date,
       description: value.description,
-      wear: value.wear,
-      image: this.image
+      wear: value.wear
     }
     this.firebaseService.updateTask(this.item.id,data)
     .then(
@@ -84,47 +83,4 @@ export class DetailsPage {
     });
     confirm.present();
   }
-
-  openImagePicker(){
-    this.imagePicker.hasReadPermission()
-    .then((result) => {
-      if(result == false){
-        // no callbacks required as this opens a popup which returns async
-        this.imagePicker.requestReadPermission();
-      }
-      else if(result == true){
-        this.imagePicker.getPictures({
-          maximumImagesCount: 1
-        }).then(
-          (results) => {
-            for (var i = 0; i < results.length; i++) {
-              this.uploadImageToFirebase(results[i]);
-            }
-          }, (err) => console.log(err)
-        );
-      }
-    }, (err) => {
-      console.log(err);
-    });
-  }
-
-  uploadImageToFirebase(image){
-    this.loading.present();
-    image = normalizeURL(image);
-    let randomId = Math.random().toString(36).substr(2, 5);
-    console.log(randomId);
-
-    //uploads img to firebase storage
-    this.firebaseService.uploadImage(image, randomId)
-    .then(photoURL => {
-      this.image = photoURL;
-      this.loading.dismiss();
-      let toast = this.toastCtrl.create({
-        message: 'Image was updated successfully',
-        duration: 3000
-      });
-      toast.present();
-    })
-  }
-
 }

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="secondary">
+  <ion-navbar color="primary">
     <ion-buttons start>
       <button ion-button icon-only (click)="dismiss()">
         <ion-icon name="md-arrow-back"></ion-icon>
@@ -12,31 +12,63 @@
 </ion-header>
 
 <ion-content padding>
-  <div>
-    <ion-row no-padding>
-      <ion-col no-padding col-6 offset-3>
-        <img [src]="image" alt="this is the image"/>
-      </ion-col>
-    </ion-row>
+  <div class="user-image-content">
     <ion-row no-padding class="user-image-row">
-      <ion-col no-padding width-60>
-        <button class="image-action-button" ion-button outline block small (click)="openImagePicker()">Bild ändern</button>
+      <ion-col no-padding col-6 offset-3>
+        <img [src]="validations_form.value.image" alt="" />
       </ion-col>
     </ion-row>
   </div>
+
   <form class="new-user-form" [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
     <ion-item>
       <ion-label floating color="primary">Art</ion-label>
-      <ion-input type="text" formControlName="title" class="form-control" required></ion-input>
+      <ion-select type="image" formControlName="image" class="form-control">
+        <ion-option value="assets/imgs/konzert.png">
+          Konzert</ion-option>
+        <ion-option value="assets/imgs/probe.png">
+          Probe</ion-option>
+        <ion-option value="assets/imgs/staendchen.png">
+          Ständchen</ion-option>
+      </ion-select>
     </ion-item>
+    <ion-item>
+      <ion-label floating color="primary">Titel</ion-label>
+      <ion-input type="text" formControlName="title" class="form-control"></ion-input>
+    </ion-item>
+
     <ion-item>
       <ion-label floating color="primary">Beschreibung</ion-label>
       <ion-input type="text" formControlName="description" class="form-control" required></ion-input>
     </ion-item>
+
     <ion-item>
-      <ion-label floating color="primary">Kleidung</ion-label>
-      <ion-input type="text" formControlName="wear" class="form-control" required></ion-input>
+      <ion-label floating color="primary">Datum & Uhrzeit</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" formControlName="date" class="form-control" required minuteValues="0,15,30,45">
+      </ion-datetime>
     </ion-item>
-    <button class="form-action-button" ion-button block type="submit" [disabled]="!validations_form.valid">Erstellen</button>
+
+    <ion-item>
+      <ion-list radio-group class="form-control" padding-top=5px>
+
+        <label>
+          <input type="radio" formControlName="wear" value="assets/wear/uniform.png" />
+          <img src="assets/wear/uniform.png" style="width : 16% ; height : 16%">
+        </label>
+
+        <label>
+          <input type="radio" formControlName="wear" value="assets/wear/softshell.png" />
+          <img src="assets/wear/softshell.png" style="width : 16% ; height : 16%">
+        </label>
+
+        <label>
+          <input type="radio" formControlName="wear" value="assets/wear/zivil.png" />
+          <img src="assets/wear/zivil.png" style="width : 16% ; height : 16%">
+        </label>
+
+      </ion-list>
+    </ion-item>
+
+    <button class="form-action-button" ion-button block type="submit" [disabled]="!validations_form.valid">Speichern</button>
   </form>
 </ion-content>

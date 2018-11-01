@@ -37,10 +37,11 @@ export class MenuPage {
   viewDetails(id, item){
     // debugger
     let data = {
+      image: item.image,
       title: item.title,
+      date: item.date,
       description: item.description,
       wear: item.wear,
-      image: item.image,
       id: id
     }
     this.navCtrl.push(DetailsPage, {
