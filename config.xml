@@ -1,8 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
+<<<<<<< HEAD
 <widget id="bean.jonas.de" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>MVO</name>
     <description>Besetzungsverwaltung des Musikverein Oberndorf</description>
     <author email="Jonas_Bien@gmx.de">Jonas</author>
+=======
+<widget id="de.bean.jonas" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>MVO</name>
+    <description>Besetzungsverwaltung des Musikverein Oberndorf</description>
+    <author email="Jonas_Bien@gmx.de">Jonas Bien</author>
+>>>>>>> da28d674f16876fe14b7ecf51ee8e62dafcb0035
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -85,4 +92,10 @@
     <plugin name="cordova-plugin-telerik-imagepicker" spec="^2.2.0">
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="your usage message" />
     </plugin>
+<<<<<<< HEAD
+=======
+    <plugin name="cordova-plugin-firebase" spec="2.0.5" />
+    <engine name="ios" spec="4.5.5" />
+    <engine name="android" spec="^6.4.0" />
+>>>>>>> da28d674f16876fe14b7ecf51ee8e62dafcb0035
 </widget>
