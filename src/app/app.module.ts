@@ -10,6 +10,8 @@ import { RegisterPage } from '../pages/register/register';
 import { MenuPage } from '../pages/menu/menu';
 import { DetailsPage } from '../pages/details/details';
 import { NewTaskModalPage } from '../pages/new-task-modal/new-task-modal';
+import { SettingsPage } from '../pages/settings/settings';
+import { RegInfoPage } from '../pages/reg-info/reg-info';
 
 import { ImagePicker } from '@ionic-native/image-picker';
 
@@ -29,7 +31,9 @@ import { environment } from '../environment/environment';
     RegisterPage,
     MenuPage,
     NewTaskModalPage,
-    DetailsPage
+    DetailsPage,
+    SettingsPage,
+    RegInfoPage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,9 @@ import { environment } from '../environment/environment';
     RegisterPage,
     MenuPage,
     NewTaskModalPage,
-    DetailsPage
+    DetailsPage,
+    SettingsPage,
+    RegInfoPage
   ],
   providers: [
     StatusBar,

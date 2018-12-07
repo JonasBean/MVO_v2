@@ -5,6 +5,7 @@ import { FirebaseService } from '../services/firebase.service';
 import { NewTaskModalPage } from '../new-task-modal/new-task-modal';
 import { DetailsPage } from '../details/details';
 import { LoginPage } from '../login/login';
+import { SettingsPage } from '../settings/settings';
 
 
 @Component({
@@ -62,6 +63,10 @@ export class MenuPage {
     .then(res => {
       this.navCtrl.push(LoginPage);
     })
+  }
+
+  settings(){
+    this.navCtrl.push(SettingsPage);
   }
 
 }
