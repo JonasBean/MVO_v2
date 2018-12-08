@@ -11,7 +11,6 @@ import { MenuPage } from '../pages/menu/menu';
 import { DetailsPage } from '../pages/details/details';
 import { NewTaskModalPage } from '../pages/new-task-modal/new-task-modal';
 import { SettingsPage } from '../pages/settings/settings';
-import { RegInfoPage } from '../pages/reg-info/reg-info';
 
 import { ImagePicker } from '@ionic-native/image-picker';
 
@@ -32,8 +31,7 @@ import { environment } from '../environment/environment';
     MenuPage,
     NewTaskModalPage,
     DetailsPage,
-    SettingsPage,
-    RegInfoPage
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -51,8 +49,7 @@ import { environment } from '../environment/environment';
     MenuPage,
     NewTaskModalPage,
     DetailsPage,
-    SettingsPage,
-    RegInfoPage
+    SettingsPage
   ],
   providers: [
     StatusBar,

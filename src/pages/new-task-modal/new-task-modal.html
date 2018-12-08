@@ -69,6 +69,22 @@
       </ion-list>
     </ion-item>
 
+    <ion-list class="item-list">
+      <ion-label class="list-label" color="primary">
+        Termin für:
+      </ion-label>
+
+      <ion-item>
+        <ion-label>Stammorchester</ion-label>
+        <ion-toggle formControlName="stamm" value="stamm"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Jugend</ion-label>
+        <ion-toggle formControlName="jugend" value="jugend"></ion-toggle>
+      </ion-item>
+    </ion-list>
+
     <button class="form-action-button" ion-button block type="submit" [disabled]="!validations_form.valid">Speichern</button>
   </form>
 </ion-content>

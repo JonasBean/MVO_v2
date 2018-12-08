@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the SettingsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ViewController, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FirebaseService } from '../services/firebase.service';
+import { MenuPage } from '../menu/menu';
 
 @IonicPage()
 @Component({
@@ -15,16 +11,72 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SettingsPage {
 
-  email: any;
+  validations_form: FormGroup;
+  settings: Array<any>;
+  id: any;
 
   constructor(
+    private viewCtrl: ViewController,
     public navCtrl: NavController,
+    private formBuilder: FormBuilder,
     public navParams: NavParams,
+    private firebaseService: FirebaseService
   ) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingsPage');
+  ionViewWillEnter() {
+    this.getData();
+  }
+
+  ionViewWillLoad() {
+    this.validations_form = this.formBuilder.group({
+      name: new FormControl(Validators.required),
+      part: new FormControl(Validators.required),
+      stamm: new FormControl(false),
+      jugend: new FormControl(false)
+    });
+  }
+
+  getData() {
+    this.firebaseService.getUserSettings()
+      .then(userData => {
+        this.settings = userData;
+
+        if (this.navParams.get('data')) {
+          let data = {
+            name: '',
+            part: '',
+            stamm: false,
+            jugend: false
+          }
+          this.firebaseService.createUserSettings(data);
+
+          this.firebaseService.getUserSettings()
+            .then(userData => {
+              this.settings = userData;
+            });
+        }
+      });
+  }
+
+
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
+
+  onSubmit(id, value) {
+    let data = {
+      name: value.name,
+      part: value.part,
+      stamm: value.stamm,
+      jugend: value.jugend
+    }
+    this.firebaseService.updateUserSettings(id, data)
+      .then(
+        res => {
+          this.navCtrl.setRoot(MenuPage)
+        }
+      )
   }
 
 }

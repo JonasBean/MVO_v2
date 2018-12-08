@@ -1,14 +1,42 @@
 <ion-header>
-    <ion-navbar color="primary">
-      <ion-title>Einstellungen</ion-title>
-    </ion-navbar>
-  </ion-header>
-  
-  <ion-content>
+  <ion-navbar color="primary">
+    <ion-title>Einstellungen</ion-title>
+  </ion-navbar>
+</ion-header>
 
+<ion-content padding>
+  <form *ngFor="let setting of settings" [formGroup]="validations_form" (ngSubmit)="onSubmit(setting.payload.doc.id, validations_form.value)">
 
+    <ion-item>
+      <ion-label floating color="primary">Name</ion-label>
+      <ion-input type="text" formControlName="name" value="{{setting.payload.doc.data().name}}"></ion-input>
+    </ion-item>
 
-  </ion-content>
-  
-  <ion-footer>
-  </ion-footer>
+    <ion-item>
+      <ion-label floating color="primary">Stimme</ion-label>
+      <ion-input type="text" formControlName="part" value="{{setting.payload.doc.data().part}}"></ion-input>
+    </ion-item>
+
+    <ion-list class="item-list">
+      <ion-label class="list-label" color="primary">
+        Termine anzeigen von:
+      </ion-label>
+
+      <ion-item>
+        <ion-label>Stammorchester</ion-label>
+        <ion-toggle formControlName="stamm" [(ngModel)]="setting.payload.doc.data().stamm"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Jugend</ion-label>
+        <ion-toggle formControlName="jugend" [(ngModel)]="setting.payload.doc.data().jugend"></ion-toggle>
+      </ion-item>
+    </ion-list>
+
+    <button class="form-action-button" ion-button block type="submit" [disabled]="!validations_form.valid">Speichern</button>
+
+  </form>
+</ion-content>
+
+<ion-footer>
+</ion-footer>

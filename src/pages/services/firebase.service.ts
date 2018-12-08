@@ -10,9 +10,14 @@ export class FirebaseService {
   private snapshotChangesSubscription: any;
   constructor(public afs: AngularFirestore) { }
 
+  unsubscribeOnLogOut() {
+    //remember to unsubscribe from the snapshotChanges
+    // debugger;
+    this.snapshotChangesSubscription.unsubscribe();
+  }
+
   getTasks() {
     return new Promise<any>((resolve, reject) => {
-      let currentUser = firebase.auth().currentUser;
       this.snapshotChangesSubscription = this.afs.collection('calendar').doc('stamm').collection('tasks').snapshotChanges()
         .subscribe(snapshots => {
           resolve(snapshots);
@@ -20,15 +25,8 @@ export class FirebaseService {
     });
   }
 
-  unsubscribeOnLogOut() {
-    //remember to unsubscribe from the snapshotChanges
-    // debugger;
-    this.snapshotChangesSubscription.unsubscribe();
-  }
-
   updateTask(taskKey, value) {
     return new Promise<any>((resolve, reject) => {
-      let currentUser = firebase.auth().currentUser;
       this.afs.collection('calendar').doc('stamm').collection('tasks').doc(taskKey).set(value)
         .then(
           res => resolve(res),
@@ -39,7 +37,6 @@ export class FirebaseService {
 
   deleteTask(taskKey) {
     return new Promise<any>((resolve, reject) => {
-      let currentUser = firebase.auth().currentUser;
       this.afs.collection('calendar').doc('stamm').collection('tasks').doc(taskKey).delete()
         .then(
           res => resolve(res),
@@ -50,13 +47,14 @@ export class FirebaseService {
 
   createTask(value) {
     return new Promise<any>((resolve, reject) => {
-      let currentUser = firebase.auth().currentUser;
       this.afs.collection('calendar').doc('stamm').collection('tasks').add({
         title: value.title,
         description: value.description,
         image: value.image,
         date: value.date,
-        wear: value.wear
+        wear: value.wear,
+        stamm: value.stamm,
+        jugend: value.jugend
       })
         .then(
           res => resolve(res),
@@ -65,18 +63,41 @@ export class FirebaseService {
     })
   }
 
-  createUser(value) {
+  createUserSettings(value) {
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
       this.afs.collection('people').doc(currentUser.uid).collection('userData').add({
         name: value.name,
-        part: value.part
+        part: value.part,
+        stamm: value.stamm,
+        jugend: value.jugend
       })
         .then(
           res => resolve(res),
           err => reject(err)
         )
     })
+  }
+
+  updateUserSettings(id, value) {
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.afs.collection('people').doc(currentUser.uid).collection('userData').doc(id).set(value)
+        .then(
+          res => resolve(res),
+          err => reject(err)
+        )
+    })
+  }
+
+  getUserSettings() {
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('userData').snapshotChanges()
+        .subscribe(snapshots => {
+          resolve(snapshots);
+        })
+    });
   }
 
 }

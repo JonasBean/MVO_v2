@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 import { AuthService } from '../services/auth.service';
-import { RegInfoPage } from '../reg-info/reg-info';
+import { SettingsPage } from '../settings/settings';
 
 
 
@@ -53,7 +53,12 @@ export class RegisterPage {
        console.log(res);
        this.errorMessage = "";
        this.successMessage = "Dein Account wurde erstellt!";
-       this.navCtrl.setRoot(RegInfoPage)
+       let data = {
+        dummy: ''
+      }
+       this.navCtrl.setRoot(SettingsPage,  {
+        data: data
+      });
      }, err => {
        console.log(err);
        this.errorMessage = err.message;

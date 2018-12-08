@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController, normalizeURL, ToastController, NavParams, AlertController, LoadingController } from 'ionic-angular';
+import { ViewController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { FirebaseService } from '../services/firebase.service';
 
@@ -24,39 +24,49 @@ export class DetailsPage {
     this.loading = this.loadingCtrl.create();
   }
 
-  ionViewWillLoad(){
+  ionViewWillLoad() {
     this.getData()
   }
 
-  getData(){
+  getData() {
     this.item = this.navParams.get('data');
     this.validations_form = this.formBuilder.group({
       image: new FormControl(this.item.image, Validators.required),
       title: new FormControl(this.item.title),
       date: new FormControl(this.item.date, Validators.required),
       description: new FormControl(this.item.description, Validators.required),
-      wear: new FormControl(this.item.wear, Validators.required)
+      wear: new FormControl(this.item.wear, Validators.required),
+      stamm: new FormControl(false),
+      jugend: new FormControl(false)
     });
+
+
   }
 
   dismiss() {
-   this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss();
   }
 
-  onSubmit(value){
+  onSubmit(value) {
     let data = {
       image: value.image,
       title: value.title,
       date: value.date,
       description: value.description,
-      wear: value.wear
+      wear: value.wear,
+      stamm: value.stamm,
+      jugend: value.jugend
     }
-    this.firebaseService.updateTask(this.item.id,data)
-    .then(
-      res => {
-        this.viewCtrl.dismiss();
-      }
-    )
+    if (!value.stamm && !value.jugend) {
+      alert("Kein Orchester für den Termin gewählt!");
+    } else {
+      this.firebaseService.updateTask(this.item.id, data)
+        .then(
+          res => {
+            this.viewCtrl.dismiss();
+          }
+        )
+    }
   }
 
   delete() {
@@ -66,16 +76,16 @@ export class DetailsPage {
       buttons: [
         {
           text: 'No',
-          handler: () => {}
+          handler: () => { }
         },
         {
           text: 'Yes',
           handler: () => {
             this.firebaseService.deleteTask(this.item.id)
-            .then(
-              res => this.viewCtrl.dismiss(),
-              err => console.log(err)
-            )
+              .then(
+                res => this.viewCtrl.dismiss(),
+                err => console.log(err)
+              )
           }
         }
       ]
