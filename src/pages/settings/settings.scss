@@ -1,0 +1,23 @@
+page-settings {
+  label > input{ /* HIDE RADIO */
+    visibility: hidden; /* Makes input not-clickable */
+    position: absolute; /* Remove input from document flow */
+  }
+  label > input + img{ /* IMAGE STYLES */
+    cursor:pointer;
+    border:2px solid transparent;
+  }
+  label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+    background: rgba(158, 0, 0, 0.5);
+    line-height: 1.7;
+    border-radius: 3px;
+    display:inline-block;
+  }
+  .item-list {
+    margin-top: 5%;
+  }
+  .list-label {
+    margin-left: 4.5%;
+    margin-bottom: 0.8%;
+  }
+}

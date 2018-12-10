@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Termin bearbeiten
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="user-image-content">
+    <ion-row no-padding class="user-image-row">
+      <ion-col no-padding col-6 offset-3>
+        <img [src]="validations_form.value.image" alt="" />
+      </ion-col>
+    </ion-row>
+  </div>
+<!--
+  <div class='circle-container'>
+      <a href='#' class='center'><img src='image.jpg'></a>
+      <a href='#' class='deg0'><img src='image.jpg'></a>
+      <a href='#' class='deg45'><img src='image.jpg'></a>
+      <a href='#' class='deg135'><img src='image.jpg'></a>
+      <a href='#' class='deg180'><img src='image.jpg'></a>
+      <a href='#' class='deg225'><img src='image.jpg'></a>
+      <a href='#' class='deg315'><img src='image.jpg'></a>
+  </div>
+-->
+  <form class="new-user-form" [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+    <ion-item>
+      <ion-label floating color="primary">Art</ion-label>
+      <ion-select type="image" formControlName="image" class="form-control">
+        <ion-option value="assets/imgs/konzert.png">
+          Konzert</ion-option>
+        <ion-option value="assets/imgs/probe.png">
+          Probe</ion-option>
+        <ion-option value="assets/imgs/staendchen.png">
+          Ständchen</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label floating color="primary">Titel</ion-label>
+      <ion-input type="text" formControlName="title" class="form-control"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating color="primary">Beschreibung</ion-label>
+      <ion-input type="text" formControlName="description" class="form-control" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating color="primary">Datum & Uhrzeit</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" formControlName="date" class="form-control" required minuteValues="0,15,30,45">
+      </ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-list radio-group class="form-control" padding-top=5px>
+
+        <label>
+          <input type="radio" formControlName="wear" value="assets/wear/uniform.png" />
+          <img src="assets/wear/uniform.png" style="width : 16% ; height : 16%">
+        </label>
+
+        <label>
+          <input type="radio" formControlName="wear" value="assets/wear/softshell.png" />
+          <img src="assets/wear/softshell.png" style="width : 16% ; height : 16%">
+        </label>
+
+        <label>
+          <input type="radio" formControlName="wear" value="assets/wear/zivil.png" />
+          <img src="assets/wear/zivil.png" style="width : 16% ; height : 16%">
+        </label>
+
+      </ion-list>
+    </ion-item>
+
+    <ion-list class="item-list">
+        <ion-label class="list-label" color="primary">
+          Termin für:
+        </ion-label>
+  
+        <ion-item>
+          <ion-label>Stammorchester</ion-label>
+          <ion-toggle formControlName="stamm"></ion-toggle>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>Jugend</ion-label>
+          <ion-toggle formControlName="jugend"></ion-toggle>
+        </ion-item>
+      </ion-list>
+
+    <button class="form-action-button" ion-button block type="submit" [disabled]="!validations_form.valid">Speichern</button>
+  </form>
+  <button class="form-action-button" ion-button block color="danger" (click)="delete()">Löschen</button>
+
+</ion-content>
