@@ -31,6 +31,10 @@
       </ng-container>
     </div>
 
+    <ion-content padding>
+  <button ion-button full (click)="showPlatform()">Where am I running?</button>
+</ion-content>
+
     <button class="submit-btn" ion-button block type="submit" [disabled]="!validations_form.valid">Anmelden</button>
     <label class="error-message">{{errorMessage}}</label>
   </form>
