@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, Platform } from 'ionic-angular';
+import { NavController} from 'ionic-angular';
 
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
@@ -32,9 +32,7 @@ export class LoginPage {
   constructor(
     private navCtrl: NavController,
     private authService: AuthService,
-    private formBuilder: FormBuilder,
-    private alertCtrl: AlertController,
-    private platform: Platform
+    private formBuilder: FormBuilder
   ) {}
 
   showPlatform() {
