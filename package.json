@@ -3,7 +3,6 @@
   "version": "0.6.0 Beta",
   "author": "Bean",
   "private": true,
-},
   "scripts": {
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
