@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Termin-Übersicht
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="user-image-content">
+    <ion-row no-padding class="user-image-row">
+      <ion-col padding-bottom="5em" size="100%">
+        <img [src]="validations_form.value.image" alt="" />
+      </ion-col>
+    </ion-row>
+  </div>
+
+<!--
+  <div class='circle-container'>
+      <a href='#' class='center'><img src='image.jpg'></a>
+      <a href='#' class='deg0'><img src='image.jpg'></a>
+      <a href='#' class='deg45'><img src='image.jpg'></a>
+      <a href='#' class='deg135'><img src='image.jpg'></a>
+      <a href='#' class='deg180'><img src='image.jpg'></a>
+      <a href='#' class='deg225'><img src='image.jpg'></a>
+      <a href='#' class='deg315'><img src='image.jpg'></a>
+  </div>
+-->
+
+  <ion-title>{{item.title}}</ion-title>
+
+  <p>{{item.description}}</p>
+
+  <ion-datetime displayFormat="DD/MM/YYYY HH:mm" required minuteValues="0,15,30,45">{{item.date}}</ion-datetime>
+
+    <!--
+      <ion-item>
+      <ion-label floating color="primary">Datum & Uhrzeit</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" formControlName="date" class="form-control" required minuteValues="0,15,30,45">
+      </ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-list radio-group class="form-control" padding-top=5px>
+
+        <label>
+          <input type="radio" formControlName="wear" value="assets/wear/uniform.png" />
+          <img src="assets/wear/uniform.png" style="width : 16% ; height : 16%">
+        </label>
+
+        <label>
+          <input type="radio" formControlName="wear" value="assets/wear/softshell.png" />
+          <img src="assets/wear/softshell.png" style="width : 16% ; height : 16%">
+        </label>
+
+        <label>
+          <input type="radio" formControlName="wear" value="assets/wear/zivil.png" />
+          <img src="assets/wear/zivil.png" style="width : 16% ; height : 16%">
+        </label>
+
+      </ion-list>
+    </ion-item>
+
+    <ion-list class="item-list">
+        <ion-label class="list-label" color="primary">
+          Termin für:
+        </ion-label>
+
+        <ion-item>
+          <ion-label>Stammorchester</ion-label>
+          <ion-toggle formControlName="stamm"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Jugend</ion-label>
+          <ion-toggle formControlName="jugend"></ion-toggle>
+        </ion-item>
+    </ion-list>
+-->
+
+</ion-content>

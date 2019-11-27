@@ -33,7 +33,8 @@ export class SettingsPage {
       name: new FormControl(Validators.required),
       part: new FormControl(Validators.required),
       stamm: new FormControl(false),
-      jugend: new FormControl(false)
+      jugend: new FormControl(false),
+      admin: new FormControl(false),
     });
   }
 
@@ -47,7 +48,8 @@ export class SettingsPage {
             name: '',
             part: '',
             stamm: false,
-            jugend: false
+            jugend: false,
+            admin: false
           }
           this.firebaseService.createUserSettings(data);
 
@@ -69,7 +71,8 @@ export class SettingsPage {
       name: value.name,
       part: value.part,
       stamm: value.stamm,
-      jugend: value.jugend
+      jugend: value.jugend,
+      admin: value.admin
     }
     this.firebaseService.updateUserSettings(id, data)
       .then(

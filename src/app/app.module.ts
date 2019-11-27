@@ -9,6 +9,7 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { MenuPage } from '../pages/menu/menu';
 import { DetailsPage } from '../pages/details/details';
+import { DetailsNoAdminPage } from '../pages/detailsNoAdmin/detailsNoAdmin';
 import { NewTaskModalPage } from '../pages/new-task-modal/new-task-modal';
 import { SettingsPage } from '../pages/settings/settings';
 
@@ -31,6 +32,7 @@ import { environment } from '../environment/environment';
     MenuPage,
     NewTaskModalPage,
     DetailsPage,
+    DetailsNoAdminPage,
     SettingsPage
   ],
   imports: [
@@ -49,6 +51,7 @@ import { environment } from '../environment/environment';
     MenuPage,
     NewTaskModalPage,
     DetailsPage,
+    DetailsNoAdminPage,
     SettingsPage
   ],
   providers: [

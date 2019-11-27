@@ -1,6 +1,12 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>Termine</ion-title>
+      <button ion-button (click)="jugendActDeact()"  [ngStyle]="{'background-color': jugendColor}">
+        <img width="30" height="30" src="assets/imgs/logo_jugend.png" />
+      </button>
+      <button ion-button (click)="stammActDeact()" [ngStyle]="{'background-color': stammColor}">
+        <img width="30" height="30" src="assets/imgs/logo.png" />
+      </button>
     <ion-buttons end>
       <button ion-button icon-only (click)="openNewUserModal()">
         <ion-icon name="add"></ion-icon>
