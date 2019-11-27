@@ -3,10 +3,7 @@ page-details{
         visibility: hidden; /* Makes input not-clickable */
         position: absolute; /* Remove input from document flow */
       }
-      p{
-        position: relative;
-        padding-left: 20em;
-      }
+      
       label > input + img{ /* IMAGE STYLES */
         cursor:pointer;
         border:2px solid transparent;
