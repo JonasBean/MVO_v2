@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+<<<<<<< HEAD
 import { NavController} from 'ionic-angular';
+=======
+import { NavController } from 'ionic-angular';
+>>>>>>> 4ea74559c5213af5ba89f995138ba8fa6e12198e
 
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 

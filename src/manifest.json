@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
   "name": "MVO",
   "short_name": "MVO",
+=======
+  "name": "Ionic",
+  "short_name": "Ionic",
+>>>>>>> 4ea74559c5213af5ba89f995138ba8fa6e12198e
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
@@ -8,6 +13,12 @@
     "sizes": "512x512",
     "type": "image/png"
   }],
+<<<<<<< HEAD
   "background_color": "#9e1212",
   "theme_color": "#9e1212"
 }
+=======
+  "background_color": "#4e8ef7",
+  "theme_color": "#4e8ef7"
+}
+>>>>>>> 4ea74559c5213af5ba89f995138ba8fa6e12198e

@@ -38,8 +38,12 @@ $colors: (
   secondary:  #c43333,
   danger:     #f53d3d,
   light:      #f4f4f4,
+<<<<<<< HEAD
   dark:       #222,
   pressed:    LightGray
+=======
+  dark:       #222
+>>>>>>> 4ea74559c5213af5ba89f995138ba8fa6e12198e
 );
 
 
@@ -86,4 +90,8 @@ $colors: (
 // --------------------------------------------------
 
 @import "roboto";
+<<<<<<< HEAD
 @import "noto-sans";
+=======
+@import "noto-sans";
+>>>>>>> 4ea74559c5213af5ba89f995138ba8fa6e12198e

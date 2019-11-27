@@ -9,7 +9,10 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { MenuPage } from '../pages/menu/menu';
 import { DetailsPage } from '../pages/details/details';
+<<<<<<< HEAD
 import { DetailsNoAdminPage } from '../pages/detailsNoAdmin/detailsNoAdmin';
+=======
+>>>>>>> 4ea74559c5213af5ba89f995138ba8fa6e12198e
 import { NewTaskModalPage } from '../pages/new-task-modal/new-task-modal';
 import { SettingsPage } from '../pages/settings/settings';
 
@@ -32,7 +35,10 @@ import { environment } from '../environment/environment';
     MenuPage,
     NewTaskModalPage,
     DetailsPage,
+<<<<<<< HEAD
     DetailsNoAdminPage,
+=======
+>>>>>>> 4ea74559c5213af5ba89f995138ba8fa6e12198e
     SettingsPage
   ],
   imports: [
@@ -51,7 +57,10 @@ import { environment } from '../environment/environment';
     MenuPage,
     NewTaskModalPage,
     DetailsPage,
+<<<<<<< HEAD
     DetailsNoAdminPage,
+=======
+>>>>>>> 4ea74559c5213af5ba89f995138ba8fa6e12198e
     SettingsPage
   ],
   providers: [

@@ -33,8 +33,12 @@ export class SettingsPage {
       name: new FormControl(Validators.required),
       part: new FormControl(Validators.required),
       stamm: new FormControl(false),
+<<<<<<< HEAD
       jugend: new FormControl(false),
       admin: new FormControl(false),
+=======
+      jugend: new FormControl(false)
+>>>>>>> 4ea74559c5213af5ba89f995138ba8fa6e12198e
     });
   }
 
@@ -48,8 +52,12 @@ export class SettingsPage {
             name: '',
             part: '',
             stamm: false,
+<<<<<<< HEAD
             jugend: false,
             admin: false
+=======
+            jugend: false
+>>>>>>> 4ea74559c5213af5ba89f995138ba8fa6e12198e
           }
           this.firebaseService.createUserSettings(data);
 
@@ -71,6 +79,7 @@ export class SettingsPage {
       name: value.name,
       part: value.part,
       stamm: value.stamm,
+<<<<<<< HEAD
       jugend: value.jugend,
       admin: value.admin
     }
@@ -80,6 +89,21 @@ export class SettingsPage {
           this.navCtrl.setRoot(MenuPage)
         }
       )
+=======
+      jugend: value.jugend
+    }
+
+    if (!value.stamm && !value.jugend){
+      alert("Keine Termine ausgewählt");
+    } else {
+      this.firebaseService.updateUserSettings(id, data)
+        .then(
+          res => {
+            this.navCtrl.setRoot(MenuPage)
+          }
+        )
+    }
+>>>>>>> 4ea74559c5213af5ba89f995138ba8fa6e12198e
   }
 
 }
