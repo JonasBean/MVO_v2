@@ -1,12 +1,9 @@
 {
   "name": "MVO",
-  "version": "0.0.1",
+  "version": "0.6.0 Beta",
   "author": "Bean",
   "private": true,
-  "engines": {
-    "node": "8.11.3"
-  }
-}
+},
   "scripts": {
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
